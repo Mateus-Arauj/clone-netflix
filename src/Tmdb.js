@@ -8,7 +8,7 @@ const basicFetch = async (url)=>{
     const json = await req.json()
     return json;
 }
-export default {
+const Tmdb = {
     getHomeList: async() =>{
         return [
             {
@@ -41,9 +41,13 @@ export default {
             case 'tv':
               info = await basicFetch(`/tv/${movieId}?language=pt-BR&api_key=${API_KEY}`)
             break;
+            default:
+              break;
           }
         }
     
         return info;
       }
 }
+
+export default Tmdb;

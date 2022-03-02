@@ -6,7 +6,6 @@ import PlayCircleOutlineIcon from '@material-ui/icons/PlayCircleOutline';
 
 const MovieRow = ({title,items})=>{
     const [widthList, setWidthList] = useState(0)
-    console.log(items)
     const pressToMoveLeft = ()=>{
         let x = widthList + Math.round(window.innerWidth / 2)
         if(x > 0) x = 0
@@ -38,7 +37,7 @@ const MovieRow = ({title,items})=>{
                 }}>
                    
                        {items.results.length > 0 && items.results.map((item,key)=>(
-                           <div className = "movieRow-item" >
+                           <div className = "movieRow-item"  key={key}>
                                <div className = "img-f" style={{
                                     backgroundSize: 'cover',
                                     backgroundPosition: 'center',

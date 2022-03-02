@@ -6,6 +6,7 @@ import HighlightMovie from './components/HighlightMovie'
 import './App.css'
 
 function App() {
+  console.log(Tmdb)
   const [movieList, setMoviesList] = useState([])
   const [highlight, setHighlight] = useState(null)
   useEffect(() =>{
