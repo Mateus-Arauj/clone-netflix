@@ -13,7 +13,8 @@ const MovieRow = ({title,items})=>{
     }
     const pressToMoveRight = ()=>{
         let x = widthList - Math.round(window.innerWidth / 2);
-        let listW = items.results.length * 150;
+        let tamI = window.innerWidth < 801 ? 120 : 150;
+        let listW = items.results.length * tamI;
         if((window.innerWidth-listW)>x){
         x = (window.innerWidth-listW) - 60;
         }
