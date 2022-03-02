@@ -33,5 +33,6 @@
 @media (max-width: 801px){
     .search-bar{
         width: 80%;
+        height: 45px;
     }
 }

@@ -75,5 +75,14 @@
 @media (max-width: 801px){
     .movieRow-right, .movieRow-left{
         opacity: 1;
+        height: 180px;
+        width: 50px;
+    }
+    .movieRow-item{ 
+        width: 120px;
+        height: 180px;
+    }
+    .movieRow h2{
+        font-size: 20px;
     }
 }
