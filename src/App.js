@@ -1,23 +1,34 @@
-import logo from './logo.svg';
-import './App.css';
+
+import React, {useEffect, useState} from 'react'
+import Tmdb from './Tmdb'
+import MovieRow from './components/MovieRow'
+import HighlightMovie from './components/HighlightMovie'
+import './App.css'
 
 function App() {
+  const [movieList, setMoviesList] = useState([])
+  const [highlight, setHighlight] = useState(null)
+  useEffect(() =>{
+    const loadAll = async() =>{
+      let list = await Tmdb.getHomeList()
+      setMoviesList(list)
+      let originalList = list.filter(i=>i.slug === 'originals')
+      let randomNumber = Math.floor(Math.random() * (originalList[0].items.results.length -1))
+      let chooseMovie = originalList[0].items.results[randomNumber]
+      let loadInfo = await Tmdb.getInfoMovie(chooseMovie.id,'tv')
+      setHighlight(loadInfo)
+    }
+    loadAll();
+  },[])
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className = "page">
+      {highlight && 
+        <HighlightMovie item={highlight}/>}
+     <section className="lists">
+       {movieList.map((item,key)=>(<MovieRow key={key} title={item.title} items={item.items}/>)
+        
+       )}
+     </section>
     </div>
   );
 }

@@ -1,0 +1,79 @@
+.movieRow{
+    margin-bottom: 30px;
+    margin-top: 40px;
+}
+.movieRow h2{
+    margin: 0px 0px 10px 30px;
+}
+
+.movieRow-listarea{
+    overflow-x: hidden !important;
+    padding-left: 30px;
+}
+.movieRow-list{
+    transition: all ease 0.5s ;
+}
+.movieRow:hover .movieRow-right,
+.movieRow:hover .movieRow-left{
+    opacity: 1;
+}
+.movieRow-item{
+    display: inline-block;
+    width: 150px;
+    height: 229px;
+    cursor: pointer;
+    overflow-y: hidden;
+}
+.img-f{
+    width: 90%;
+    height: inherit;
+}
+.movieRow-item img {
+    width: 100%;
+    transform: scale(0.9);
+    transition: all ease 0.2s ;
+    position: relative;
+}
+
+.movieRow-right, .movieRow-left{
+    position: absolute;
+    height: 225px;
+    display: flex;
+    justify-content: center;
+    z-index: 99;
+    align-items: center;
+    background-color: rgba(0,0,0,.6);
+    overflow: hidden;
+    cursor: pointer;
+    opacity: 0;
+
+}
+.movieRow-right{
+    right: 0;  
+}
+.movieRow-left{
+    left: 0;
+}
+.button-play{
+    display: flex;
+    width: inherit;
+    height: inherit;
+    justify-content: center;
+    align-items: center;
+    z-index: 1;
+    opacity: 0;
+    transform: scale(0.8);
+    transition: transform ease 0.5s, opacity ease 1s;
+    
+}
+.button-play:hover {
+    opacity: 0.8;
+    transform: scale(1.2);
+}
+
+
+@media (max-width: 801px){
+    .movieRow-right, .movieRow-left{
+        opacity: 1;
+    }
+}
