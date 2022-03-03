@@ -56,7 +56,7 @@ const MovieRow = ({title,items})=>{
                                     <p>{item.overview.length > 200? item.overview.substring(0,200) + "...": item.overview}</p>
                                     {console.log(item)}
                                     <div className = "bottom-cardShow"> 
-                                        <a className = "cardShow--button-play" href=""> ▶  Assistir</a>
+                                        <a className = "cardShow--button-play" href={`/movie/${item.id}`}> ▶  Assistir</a>
                                         <div className = "circle"> 
                                             <Add style={{fontSize: 25}}/>
                                         </div>
