@@ -3,6 +3,9 @@ import './MovieRow.css'
 import NavigateBeforeIcon from '@material-ui/icons/NavigateBefore';
 import NavigateNextIcon from '@material-ui/icons/NavigateNext';
 import PlayCircleOutlineIcon from '@material-ui/icons/PlayCircleOutline';
+import Add from '@material-ui/icons/Add';
+import ThumbUp from '@material-ui/icons/ThumbUp';
+import ThumbDown from '@material-ui/icons/ThumbDown';
 
 const MovieRow = ({title,items})=>{
     const [widthList, setWidthList] = useState(0)
@@ -47,6 +50,24 @@ const MovieRow = ({title,items})=>{
                                 <div className = "button-play">
                                     <PlayCircleOutlineIcon style={{fontSize: 60}}/>
                                 </div>
+                                </div>
+                                <div className = "card-show">
+                                    <strong>{item.title}</strong>
+                                    <p>{item.overview.length > 200? item.overview.substring(0,200) + "...": item.overview}</p>
+                                    {console.log(item)}
+                                    <div className = "bottom-cardShow"> 
+                                        <a className = "cardShow--button-play" href=""> ▶  Assistir</a>
+                                        <div className = "circle"> 
+                                            <Add style={{fontSize: 25}}/>
+                                        </div>
+                                        <div className = "circle"> 
+                                            <ThumbUp style={{fontSize: 23}}/>
+                                        </div>
+                                        <div className = "circle"> 
+                                            <ThumbDown style={{fontSize: 23}}/>
+                                        </div>
+
+                                    </div>
                                 </div>
                                 
                             </div>
