@@ -52,7 +52,9 @@ const MovieRow = ({title,items})=>{
                                 </div>
                                 </div>
                                 <div className = "card-show">
-                                    <strong>{item.title}</strong>
+                                    <strong style = {{
+                                        fontSize: 22
+                                    }}>{item.title}</strong>
                                     <p>{item.overview.length > 200? item.overview.substring(0,200) + "...": item.overview}</p>
                                     {console.log(item)}
                                     <div className = "bottom-cardShow"> 
