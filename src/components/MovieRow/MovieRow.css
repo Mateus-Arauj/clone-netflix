@@ -36,22 +36,26 @@
 
 .movieRow-right, .movieRow-left{
     position: absolute;
-    height: 225px;
     display: flex;
     justify-content: center;
     z-index: 99;
     align-items: center;
-    background-color: rgba(0,0,0,.6);
+    background-color: transparent;
     overflow: hidden;
     cursor: pointer;
     opacity: 0;
-
+    margin: 0;
+    height: 270px;
 }
-.movieRow-right{
-    right: 0;  
+.movieRow-right:hover, .movieRow-left:hover{
+    background-color: rgba(0, 0, 0, 0.26) 
 }
 .movieRow-left{
     left: 0;
+}
+
+.movieRow-right{
+    right: 0;
 }
 .button-play{
     display: flex;

@@ -16,32 +16,33 @@ const MovieRow = ({title,items})=>{
     }
     const pressToMoveRight = ()=>{
         let x = widthList - Math.round(window.innerWidth / 2);
-        let tamI = window.innerWidth < 801 ? 120 : 150;
+        let tamI = window.innerWidth < 801 ? 120 : 215;
         let listW = items.results.length * tamI;
         if((window.innerWidth-listW)>x){
         x = (window.innerWidth-listW) - 60;
         }
         setWidthList(x)
+        console.log(widthList)
     }
     return (
         <div className="movieRow">
             <h2>{title}</h2>
             <div className= "movieRow-left" onClick={pressToMoveLeft}>
-                <NavigateBeforeIcon style = {{fontSize: 50}}/>
+                <NavigateBeforeIcon style = {{fontSize: 60}}/>
 
             </div>
             <div className= "movieRow-right" onClick={pressToMoveRight}>
-                <NavigateNextIcon style = {{fontSize: 50}}/>
+                <NavigateNextIcon style = {{fontSize: 60}}/>
                 
             </div>
             <div className = "movieRow-listarea">
                 <div className = "movieRow-list" style = {{
                     marginLeft: widthList,
-                    width: `${items.results.length * 150}px`
+                    width: `${items.results.length * 215}px`
                 }}>
                    
                        {items.results.length > 0 && items.results.map((item,key)=>(
-                           <div className = "movieRow-item"  key={key}>
+                           <div className = "movieRow-item" key={key}>
                                <div className = "img-f" style={{
                                     backgroundSize: 'cover',
                                     backgroundPosition: 'center',
@@ -56,7 +57,7 @@ const MovieRow = ({title,items})=>{
                                         fontSize: 22
                                     }}>{item.title}</strong>
                                     <p>{item.overview.length > 200? item.overview.substring(0,200) + "...": item.overview}</p>
-                                    {console.log(item)}
+                    
                                     <div className = "bottom-cardShow"> 
                                         <a className = "cardShow--button-play" href={`/movie/${item.id}`}> ▶  Assistir</a>
                                         <div className = "circle"> 
