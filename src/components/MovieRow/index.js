@@ -9,25 +9,43 @@ import ThumbDown from '@material-ui/icons/ThumbDown';
 
 const MovieRow = ({title,items})=>{
     const [widthList, setWidthList] = useState(0)
+    
+    //Filter movies that contain description
+    const itemsWithOverview = items.results.filter(i=>i.overview)
+
+    // <- Move carousel left
     const pressToMoveLeft = ()=>{
         let x = widthList + Math.round(window.innerWidth / 2)
         if(x > 0) x = 0
         setWidthList(x)
     }
+
+    // -> Move carousel right
     const pressToMoveRight = ()=>{
         let x = widthList - Math.round(window.innerWidth / 2);
-        let tamI = window.innerWidth < 801 ? 120 : 215;
-        let listW = items.results.length * tamI;
+        let tamI = window.innerWidth < 801 ? 120 : 210;
+        let listW = itemsWithOverview.length * tamI;
         if((window.innerWidth-listW)>x){
-        x = (window.innerWidth-listW) - 60;
+        x = (window.innerWidth-listW) - 400;
         }
         setWidthList(x)
-        console.log(widthList)
     }
+    
+    // get movie/series/documentary name 
+     const getName = (ob) =>{
+        if(ob.name){
+            return ob.name
+        } else if(ob.original_name){
+            return ob.original_name
+        }else{
+            return ob.title
+        }
+    }
+
     return (
         <div className="movieRow">
             <h2>{title}</h2>
-            <div className= "movieRow-left" onClick={pressToMoveLeft}>
+            <div className= "movieRow-left" onClick={pressToMoveLeft} >
                 <NavigateBeforeIcon style = {{fontSize: 60}}/>
 
             </div>
@@ -38,10 +56,10 @@ const MovieRow = ({title,items})=>{
             <div className = "movieRow-listarea">
                 <div className = "movieRow-list" style = {{
                     marginLeft: widthList,
-                    width: `${items.results.length * 215}px`
+                    width: `${((itemsWithOverview.length + 2) * 215)}px`
                 }}>
                    
-                       {items.results.length > 0 && items.results.map((item,key)=>(
+                       {itemsWithOverview.length > 0 && itemsWithOverview.map((item,key)=>(
                            <div className = "movieRow-item" key={key}>
                                <div className = "img-f" style={{
                                     backgroundSize: 'cover',
@@ -55,7 +73,9 @@ const MovieRow = ({title,items})=>{
                                 <div className = "card-show">
                                     <strong style = {{
                                         fontSize: 22
-                                    }}>{item.title}</strong>
+                                    }}>
+                                        {getName(item)}
+                                    </strong>
                                     <p>{item.overview.length > 200? item.overview.substring(0,200) + "...": item.overview}</p>
                     
                                     <div className = "bottom-cardShow"> 
