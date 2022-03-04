@@ -4,11 +4,12 @@ import Tmdb from './Tmdb'
 import MovieRow from './components/MovieRow'
 import HighlightMovie from './components/HighlightMovie'
 import './App.css'
+import Footer from './components/Footer'
 
 function App() {
-  console.log(Tmdb)
   const [movieList, setMoviesList] = useState([])
   const [highlight, setHighlight] = useState(null)
+  
   useEffect(() =>{
     const loadAll = async() =>{
       let list = await Tmdb.getHomeList()
@@ -30,6 +31,7 @@ function App() {
         
        )}
      </section>
+     <Footer/>
     </div>
   );
 }
