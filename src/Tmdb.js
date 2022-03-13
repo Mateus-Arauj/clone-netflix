@@ -1,4 +1,4 @@
-const API_KEY = '4ff6872f46c3b1bea074504726cf19fb'
+const API_KEY = process.env.API_KEY
 const API_BASE = 'https://api.themoviedb.org/3'
 
 
